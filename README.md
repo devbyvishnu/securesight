@@ -96,3 +96,7 @@ Unit and integration tests using Jest or Playwright for frontend and backend rel
 ✅ Add timestamp display:
 
 Show real-time timestamps under the Incident Player and each item in the Incident List for context.
+
+# .gitignore
+node_modules/
+
