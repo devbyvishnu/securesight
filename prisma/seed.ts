@@ -1,4 +1,4 @@
-import { PrismaClient } from '../app/generated/prisma';
+import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 
 async function main() {
@@ -20,7 +20,7 @@ async function main() {
   const cameras = await prisma.camera.findMany();
 
   const getCameraId = (cameraName: string) => {
-    const camera = cameras.find(c => c.name === cameraName);
+    const camera = cameras.find((c: { name: string; id: number }) => c.name === cameraName);
     if (!camera) {
       throw new Error(`Camera with name "${cameraName}" not found.`);
     }
