@@ -1,36 +1,98 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+#  CCTV Security Dashboard – Next.js + Supabase + Prisma
 
-## Getting Started
+A modern web application to manage and monitor CCTV security events such as unauthorized access, gun threats, theft, vandalism, and face recognition logs.
 
-First, run the development server:
+---
+
+## 📦 Tech Stack
+
+- **Frontend**: [Next.js](https://nextjs.org/) with App Router and React 18
+- **Backend/API**: API Routes in Next.js
+- **Database**: [Supabase](https://supabase.com/) (PostgreSQL) for data storage and auth
+- **ORM**: [Prisma](https://www.prisma.io/) to interact with Supabase's PostgreSQL database
+- **Styling**: Tailwind CSS
+- **Icons**: Heroicons & Custom SVG
+- **Deployment**: Vercel / Supabase Hosting
+
+---
+
+##  Deployment Instructions
+
+### 1. Clone the Repository
 
 ```bash
-npm run dev
+git clone https://github.com/yourusername/cctv-security-dashboard.git
+cd cctv-security-dashboard
+
+npm install
 # or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+yarn install
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+npx prisma generate
+npx prisma migrate deploy
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+npx prisma migrate dev --name init
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+/app             → Next.js App Router pages and components
+/prisma          → Prisma schema and migrations
+/components      → Reusable UI components
+/lib             → Supabase & Prisma utilities
+/public          → Static assets
+.env.local       → Environment config (keep secret)
 
-## Learn More
+If I Had More Time...
 
-To learn more about Next.js, take a look at the following resources:
+✅ Fix remaining API issues:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+GET /api/incidents?resolved=false — ensure newest-first JSON is returned.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+PATCH /api/incidents/:id/resolve — correctly toggle resolved and return the updated row.
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+✅ Enhance UI/UX with shadcn/ui:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Replace default components with modern, accessible UI using the shadcn/ui library.
+
+Improve layout consistency, animations, and design responsiveness.
+
+✅ Improve desktop experience:
+
+When an incident is selected, show a mini strip of two additional camera thumbnails.
+
+Clicking a thumbnail plays that camera's footage in sync with the selected incident.
+
+Display relevant incident lists under the selected camera view.
+
+This feature will be optimized for desktop browsers but adapted for tablets and small devices too.
+
+✅ Enhance Admin Dashboard:
+
+Add analytics with charts for threat type trends, camera activity, and resolution time using tools like Chart.js or Recharts.
+
+✅ Add full video integration:
+
+Live streaming support.
+
+Playback from storage (Supabase Storage or integrated S3).
+
+✅ Implement advanced RBAC (Role-Based Access Control):
+
+Granular permission levels: Viewer, Operator, Analyst, and Admin.
+
+✅ Add notifications system:
+
+Trigger email/SMS alerts on critical incidents using providers like Twilio or SendGrid.
+
+✅ Progressive Web App (PWA) & Mobile Optimization:
+
+Ensure mobile-first design.
+
+Add PWA features: offline support, installable app shell, and push notifications.
+
+✅ Write tests for stability:
+
+Unit and integration tests using Jest or Playwright for frontend and backend reliability.
+
+✅ Add timestamp display:
+
+Show real-time timestamps under the Incident Player and each item in the Incident List for context.
