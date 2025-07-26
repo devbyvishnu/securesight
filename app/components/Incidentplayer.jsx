@@ -1,6 +1,7 @@
 "use client";
 import { StopCircleIcon } from '@heroicons/react/24/solid'
 import LiveDateTime from "./LiveDateTime";
+import Image from 'next/image';
 
 const Incidentplayer = () => {
   return (
@@ -21,18 +22,23 @@ const Incidentplayer = () => {
                 <div className="absolute bottom-2 right-2 flex gap-2">
                     <div className="bg-black/80 text-white rounded-sm flex flex-col items-center justify-center"> 
                     <span className="text-sm font-semibold">Camera - 02</span>
-                    <img 
+                    <Image 
                     src="/images/Cover1.png"
-                    alt="Cam 2"
-                    className="w-30 h-20 rounded-b-sm" />
+                      alt="Cam 2"
+                      width={120} 
+                      height={80}
+                      className="w-30 h-20 rounded-b-sm" />
                     </div>
                     
                      <div className="bg-black/80 text-white rounded-sm flex flex-col items-center justify-center"> 
                     <span className="text-sm font-semibold">Camera - 03</span>
-                     <img 
+                     <Image 
                     src="/images/Cover2.png" 
-                    alt="Cam 3"
-                    className="w-30 h-20 rounded-md" />
+                      alt="Cam 3"
+                      width={120} 
+                      height={80} 
+                      className="w-30 h-20 rounded-md" 
+                    />
                     </div>
                    
                 </div>

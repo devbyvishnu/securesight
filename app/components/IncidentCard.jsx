@@ -1,5 +1,6 @@
 'use client'
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
+import Image from 'next/image'
 import { useState } from 'react'
 
 const IncidentCard = ({ incident, onResolve }) => {
@@ -27,9 +28,11 @@ const IncidentCard = ({ incident, onResolve }) => {
 
     return (
         <div className={`flex gap-3 items-start ${isFadingOut ? 'opacity-0 transition-opacity duration-500 ease-out' : ''}`}>
-            <img
+            <Image
                 src={incident.image}
                 alt="Incident Thumbnail"
+                 width={120}  
+                 height={80} 
                 className='w-30 h-20 object-cover rounded-md' />
 
             <div className='flex-1'>
